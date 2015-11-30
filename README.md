@@ -43,11 +43,21 @@ XSS är en attack där hackaren injecerar skadligt script i en annars ofarlig oc
 XSS möjliggörs genom att data tar sig in i en application genom en opålitlig källa eller att data skickas till en användare utan att ha blivit validerad från skadligt innehåll[4].   
    
 #####Förebyggande åtgärder    
-OWASP har en rad olika åtgärder som bör implementeras för att minimera risken med XSS.   
+OWASP har en rad olika åtgärder som bör implementeras för att minimera risken med XSS[4].   
 1)Tillåt opålitlig data endast på tillåtna platser.    
 Exempel på platser där opålitlig data kan göra skada är mellan en scripttagg eller styletagg, i en HTML-kommentar, i ett attributnamn eller taggnamn.    
-2) Sanera data innan det sätts mellan HTML element. 
-Tillåt inte tecken så som <>&'"/ som output till dokumentet, utan använd istället dess HTML motsvarighet (\&amp;, )
+2) Sanera opålitlig data innan det används i
+   *HTML element   
+   *HTML attribut   
+   *Data för Javascript    
+   *Json data
+   *Styles properties    
+   *URL parameter    
+Tillåt inte tecken så som <>&'"/ som output till dokumentet, utan använd istället dess HTML-motsvarighet (\&amp;, \&lt;, \&gt; etc. ).   
+3)Om HTML ska tillåtas skickas in till applikationen, använd ett bibliotek som är avsedd till att sanera otillåten data.    
+   
+
+
 
    
    

@@ -71,10 +71,26 @@ Password: \<input type="text" name="Password">
 #####Förslag på åtgärd   
 OWASP rekommenderar att all användardata saneras och encodas till HTML-vänliga tecken innan de renderas till dokumentet. Det innebär att tecken som <>'"&/ aldrig renderas ut, istället kommer det att renderas \&gt;, \&amp; etc.   
 
+   
+###Insecure Direct Object References
+#####Beskrivning   
+Detta är en attack som kan inträffa när ett internt implementerat objekt (ex. en fil, en katalog, data från databas eller en nyckel) refereras genom URL'en eller parameter i ett formulär, och när access till detta objekt kan nås utan auktorisering[5].   
+
+#####Orsak   
+Applikationer som använder namnet på ett internt objekt (kan tex vara id på en användare) i URL'en, eller i formulärparameter, och inte verifierar att användaren har rättigheter att visa aktuell information[5]. 
+
+#####Förebyggande åtgärder
 
 
    
    
+####Labby Mezzage   
+
+
+####Problem   
+
+
+####Förslag på åtgärd    
 
 
    
@@ -92,6 +108,6 @@ OWASP rekommenderar att all användardata saneras och encodas till HTML-vänliga
    
 [4] "Cross-site Scripting (XSS)" OWASP,22 April 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS. [Hämtad: 30 November, 2015].    
    
-[4] "Cross-site Scripting (XSS)" OWASP,22 April 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS. [Hämtad: 30 November, 2015].
+[5] "Top 10 2007-Insecure Direct Object Reference" OWASP,18 April 2010 [Online] Tillgänglig: https://www.owasp.org/index.php/https://www.owasp.org/index.php/Top_10_2007-Insecure_Direct_Object_Reference. [Hämtad: 30 November, 2015].
 
 

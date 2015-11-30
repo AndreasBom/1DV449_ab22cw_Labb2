@@ -29,23 +29,41 @@ Applikationen har en inloggningssida där användaren måste ange emailadress oc
 Det är möjligt att logga in på applikationen utan att känna till email eller lösenord. Inloggning kan ske genom att skriva in en giltig emailadress (viken som helst) och istället för lösenord skrivs 1'or'1'='1 . Det som sker är att en SQL injeceras i lösenordsfältet och oavsett emailadress eller lösenord behöver vara korrekta, eftersom det sista som SQL-frågan säger är att 1=1. Detta kommer alltid vara sant, och innebär att hackaren loggas in.    
    
 #####Förslag på lösning   
-OWASPs rekommendation för att minimera risker med SQL injections är att implementera antigen parameteriserade SQL-frågor eller parameteriserade lagrade procedurer. Utöver detta bör previligerierna för databasen ses över, för att säkerställa att användarna har minsta möjliga rättigheter, utifrån vad de förväntas kunna göra[3].   
+OWASPs rekommendation för att minimera risker med SQL injections är att implementera antigen parameteriserade SQL-frågor eller parameteriserade lagrade procedurer. Utöver detta bör previligerierna för databasen ses över, för att säkerställa att användarna har minsta möjliga rättigheter, utifrån vad de förväntas kunna göra[3].    
    
    
-
+   
+   
 
 ###XSS (Cross site scripting)    
+#####Beskrivning   
+XSS är en attack där hackaren injecerar skadligt script i en annars ofarlig och pålitlig webbsida. När andra användares webbläsare läser in scriptet, execveras det utan att veta att det är script som inte är pålitligt. Scriptet kan få access till användarens kakor, sessions tokens eller annan känslig data som lagras i användarens klient, och som sedan kan skickas och användas av hackaren. Syftet kan också vara att förstöra en webbsida genom att scriptet förändrar HTML-koden.[4].  
+   
+#####Orsak   
+XSS möjliggörs genom att data tar sig in i en application genom en opålitlig källa eller att data skickas till en användare utan att ha blivit validerad från skadligt innehåll[4].   
+   
+#####Förebyggande åtgärder    
+OWASP har en rad olika åtgärder som bör implementeras för att minimera risken med XSS.   
+1)Tillåt opålitlig data endast på tillåtna platser.    
+Exempel på platser där opålitlig data kan göra skada är mellan en scripttagg eller styletagg, i en HTML-kommentar, i ett attributnamn eller taggnamn.    
+2) Sanera data innan det sätts mellan HTML element. 
+Tillåt inte tecken så som <>&'"/ som output till dokumentet, utan använd istället dess HTML motsvarighet (\&amp;, )
 
    
    
+      
    
    
+
 ###Referenser   
 [1] "Category:Injection," OWASP, 4 November 2007 [Online] Tillgänglig: https://www.owasp.org/index.php/Category:Injection. [Hämtad: 30 November, 2015].   
    
 [2] "SQL Injection," OWASP, 14 Augusti 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/SQL_Injection. [Hämtad: 30 November, 2015].   
    
 [3] "Guide to SQL Injection" OWASP, 9 Juli 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/Guide_to_SQL_Injection . [Hämtad: 30 November, 2015]. 
-
+   
+[4] "Cross-site Scripting (XSS)" OWASP,22 April 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS. [Hämtad: 30 November, 2015].    
+   
+[4] "Cross-site Scripting (XSS)" OWASP,22 April 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS. [Hämtad: 30 November, 2015].
 
 

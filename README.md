@@ -14,7 +14,7 @@ Injections är en säkerhetsbrist som ingår i kategorin 'Attack'. SQL injection
 SQL injections kan utföras om data tillåts komma från en opålitlig källa, eller om indata dynamiskt utgör SQL-frågan på servern[2].   
 
 #####Förebyggande åtgärder   
-Det finns flera åtgärder för att undvika SQL-injections[2]. 
+Det finns flera åtgärder för att undvika SQL-injections[2].    
 1) Parameteriserade SQL-frågor   
 2) Användning av lagrade procedurer   
 3) Sanera input från användaren, så att inga 'farliga' tecken släpps fram till SQL-frågan.   
@@ -74,21 +74,21 @@ OWASP rekommenderar att all användardata saneras och encodas till HTML-vänliga
    
 ###Insecure Direct Object References
 #####Beskrivning   
-Detta är en attack som kan inträffa när ett internt implementerat objekt (ex. en fil, en katalog, data från databas eller en nyckel) refereras genom URL'en eller parameter i ett formulär, och när access till detta objekt kan nås utan auktorisering[5].   
+Detta är en attack som kan inträffa när ett internt implementerat objekt (ex. en fil, en katalog, data från databas eller en nyckel) refereras genom URL'en eller parameter i ett formulär, och när access till detta objekt kan nås utan auktorisering[5]. Det innebär att obehöriga kan få tillgång till t.ex. en fil eller annan data. 
 
 #####Orsak   
 Applikationer som använder namnet på ett internt objekt (kan tex vara id på en användare) i URL'en, eller i formulärparameter, och inte verifierar att användaren har rättigheter att visa aktuell information[5]. 
 
 #####Förebyggande åtgärder
-
+För att undvika att obehöriga får tillgång till data, ska programmeraren undvika att göra en direkt refererens till private objekt(ex. undivik att ha primärnyckeln som en del i URL'en). Om direktreferenser används ska en kontroll göras innan datan hämtas, för att kontrollera om användaren har rättigheter att hämta ut datan[5-6]. 
 
    
    
 ####Labby Mezzage   
-
+De sparade meddelanden skickas som json-data, och finns på url'en /message/data. 
 
 ####Problem   
-
+Användaren behöver inte vara inloggad för att få access till meddelanden. Detta är ett stort säkerhetsproblem, eftersom obehöriga har  tillgång till datan. 
 
 ####Förslag på åtgärd    
 
@@ -109,5 +109,6 @@ Applikationer som använder namnet på ett internt objekt (kan tex vara id på e
 [4] "Cross-site Scripting (XSS)" OWASP,22 April 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS. [Hämtad: 30 November, 2015].    
    
 [5] "Top 10 2007-Insecure Direct Object Reference" OWASP,18 April 2010 [Online] Tillgänglig: https://www.owasp.org/index.php/https://www.owasp.org/index.php/Top_10_2007-Insecure_Direct_Object_Reference. [Hämtad: 30 November, 2015].
-
+   
+[5] "Top 10 2013-A4-Insecure Direct Object References" OWASP, 14 Juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References. [Hämtad: 1 December, 2015].
 

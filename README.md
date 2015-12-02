@@ -90,17 +90,19 @@ För att undvika att obehöriga får tillgång till data, ska programmeraren und
 2) Radera meddelanden görs via POST med /delete i headern och messageID i body'n. Det är tänkt att enbard admin ska ha rättigheter att radera. 
 
 ####Problem   
-1) Användaren behöver inte vara inloggad för att få access till meddelanden. Detta är ett stort säkerhetsproblem, eftersom obehöriga har  tillgång till datan. 
+1) Användaren behöver inte vara inloggad för att få access till meddelanden. Detta är ett stort säkerhetsproblem, eftersom obehöriga har  tillgång till datan.    
 2) Meddelanden kan raderas genom att manipulera en POST-förfrågan till servern. Detta innebär att obehöriga kan radera meddelanden. 
-
+  
 ####Förslag på åtgärd     
 Eftersom det är en direktreferens till datakällan (/message/data och /delete) är rekommendationen att en autensiering görs innan datan visas eller raderas. Endast behöriga (inloggade) ska ha rätt att se jsonfilen och enbart admin ska kunna radera.    
     
        
        
 ###Prestanda   
-
-   
+För att öka prestandan finns en rad olika åtgärder som utvecklaren kan göra. Enligt Sounders[7] är tidsåtgången för att hämta HTML-dokumentet ca 10-20%. De kvarvarande 80-90% av tiden är den del där utvecklaren kan göra prestandaförbättringar. Nedan redovisar jag några prestandaåtgärder som Labby Mezzage bör överväga att använda sig av.    
+    
+######Minimera antalet HTML förfrågningar    
+Varje resurs som ska laddas in (css, javascript, bilder, Flash etc) skickas som en HTTP förfrågan, vilket ökar tidsåtgången som en sida behöver för att laddas klart. Prestandan kan förbättras genom att minska antalet HTTP förfrågningar. 
 
 
 
@@ -121,5 +123,7 @@ Eftersom det är en direktreferens till datakällan (/message/data och /delete) 
    
 [5] "Top 10 2007-Insecure Direct Object Reference" OWASP,18 April 2010 [Online] Tillgänglig: https://www.owasp.org/index.php/https://www.owasp.org/index.php/Top_10_2007-Insecure_Direct_Object_Reference. [Hämtad: 30 November, 2015].
    
-[5] "Top 10 2013-A4-Insecure Direct Object References" OWASP, 14 Juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References. [Hämtad: 1 December, 2015].
+[6] "Top 10 2013-A4-Insecure Direct Object References" OWASP, 14 Juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References. [Hämtad: 1 December, 2015].    
+    
+[7] S. Sounders, "High Performance Web Sites" Sebastopol: O’Reilly Media, 2007.
 

@@ -6,6 +6,7 @@ Andreas Bom, ab22cw
 Jag kommer i denna rapport presentera säkerhets- och prestandabrister som webbapplikationen Labby Mezzage har, samt ge förslag på hur detta kan förbättras.   
 Hädanefter kommer jag att referera den person eller de personer som utför ett hot mot säkerheten för 'hackare, 'hackaren' eller 'hackarna'.   
 
+##Säkerhet   
 
 ###SQL injections   
 #####Beskrivning   
@@ -85,12 +86,22 @@ För att undvika att obehöriga får tillgång till data, ska programmeraren und
    
    
 ####Labby Mezzage   
-De sparade meddelanden skickas som json-data, och finns på url'en /message/data. 
+1) De sparade meddelanden skickas som json-data, och finns på url'en /message/data.     
+2) Radera meddelanden görs via POST med /delete i headern och messageID i body'n. Det är tänkt att enbard admin ska ha rättigheter att radera. 
 
 ####Problem   
-Användaren behöver inte vara inloggad för att få access till meddelanden. Detta är ett stort säkerhetsproblem, eftersom obehöriga har  tillgång till datan. 
+1) Användaren behöver inte vara inloggad för att få access till meddelanden. Detta är ett stort säkerhetsproblem, eftersom obehöriga har  tillgång till datan. 
+2) Meddelanden kan raderas genom att manipulera en POST-förfrågan till servern. Detta innebär att obehöriga kan radera meddelanden. 
 
-####Förslag på åtgärd    
+####Förslag på åtgärd     
+Eftersom det är en direktreferens till datakällan (/message/data och /delete) är rekommendationen att en autensiering görs innan datan visas eller raderas. Endast behöriga (inloggade) ska ha rätt att se jsonfilen och enbart admin ska kunna radera.    
+    
+       
+       
+###Prestanda   
+
+   
+
 
 
    

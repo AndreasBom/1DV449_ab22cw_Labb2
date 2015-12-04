@@ -116,11 +116,16 @@ Textfiler (HTML, scripts, stylesheets, XML, Json) som skickas mellan server och 
 ######Placera stylesheets i början, script i slutet och använd externa filer     
 Inline css och javascript, i motsatts till externa filer, är snabbare första gången sidan laddas. Anledningen är att det krävs färre HTTP-requests. Men eftersom eftersom inline-koden är en del av HTML dokumentet, kommer denna data att behöva laddas varje gång dokumentet laddas. När dessa flyttas ut till externa filer minska filstorleken på HTML dokumentet och om cache används för de externa filerna kommer reponstiden (antalet requests) att minska efter första laddningen av sidan[7].     
    
-Genom att placera CSS i början av HTML-dokuemntet, kan element börja visas allt eftersom de har laddats in i klienten. Detta är har inte särskilt stor påverkan på den faktiska tiden för sidan att laddas in, utan är i stället ett sätt att visa för användaren att webbsidan är på gång, och är snart färdig (progressiv rendering). Alternativet är att en vit bakgrund visas tills att alla element har mottagits från servern och därefter visa sidan i sin hehet. Detta skulle upplevas som att sidan tar längre tid att laddas[7].   
+Genom att placera CSS i början av HTML-dokumentet, kan element börja visas allt eftersom de har laddats in i klienten. Detta är har inte särskilt stor påverkan på den faktiska tiden för sidan att laddas in, utan är i stället ett sätt att visa för användaren att webbsidan är på gång, och är snart färdig (progressiv rendering). Alternativet är att en vit bakgrund visas tills att alla element har mottagits från servern och därefter visa sidan i sin hehet. Detta skulle upplevas som att sidan tar längre tid att laddas[7].   
    
 Javascript-filer ska om möjligt placeras i slutet på dokumentet. Hela javascript-filen måste läsas in, innan fortsatt fortsatt inläsning av sidan kan göras. När skriptfilen läggs i slutet kan sidan renderas progresivt som tidigare beskrivet. Läggs scriptfilen i början av dokumentet, kommer sidan att upplevas ta längre tid, eftersom det tar längre tid innan element börjar renderas ut[7].   
    
-
+Labby Mezzage har inline CSS som är placerad efter body-tagen. Applikationen har javaskriptsfiler som läses in i head-taggen. Min rekommendation är att detta ändras, så att ovan nämda regler följs.    
+   
+######Minifiera Javascript   
+Genom att ta bort tecken som inte är nödvändinga (minifiering), kan filstorleken reduceras. Mellanslag, radbrytning, tabb och kommentarer är exempel på tecken och tas bort.   
+   
+######
 
 
 

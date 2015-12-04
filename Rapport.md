@@ -118,6 +118,9 @@ Inline css och javascript, i motsatts till externa filer, är snabbare första g
    
 Genom att placera CSS i början av HTML-dokuemntet, kan element börja visas allt eftersom de har laddats in i klienten. Detta är har inte särskilt stor påverkan på den faktiska tiden för sidan att laddas in, utan är i stället ett sätt att visa för användaren att webbsidan är på gång, och är snart färdig (progressiv rendering). Alternativet är att en vit bakgrund visas tills att alla element har mottagits från servern och därefter visa sidan i sin hehet. Detta skulle upplevas som att sidan tar längre tid att laddas[7].   
    
+Javascript-filer ska om möjligt placeras i slutet på dokumentet. Hela javascript-filen måste läsas in, innan fortsatt fortsatt inläsning av sidan kan göras. När skriptfilen läggs i slutet kan sidan renderas progresivt som tidigare beskrivet. Läggs scriptfilen i början av dokumentet, kommer sidan att upplevas ta längre tid, eftersom det tar längre tid innan element börjar renderas ut[7].   
+   
+
 
 
 

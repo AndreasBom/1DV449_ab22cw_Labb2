@@ -114,8 +114,11 @@ För att undvika att resurser skickas i varje HTTP-respons, bör dessa cachas, d
 Textfiler (HTML, scripts, stylesheets, XML, Json) som skickas mellan server och klient kan komrimeras med Gzip om de är tyngre än 1-2Kb. Denna åtgärd minskar totala storleken på innehållet i responsen. HTTP-förfrågans har headern 'Acctept-Encoding: gzip' och HTTP responsen har headern 'Content-Encoding: gzip' när kompression används. Konfigurationen för att möjliggöra gzip görs enklast i HTTP-serverns konfigurationsfil[7].    
     
 ######Placera stylesheets i början, script i slutet och använd externa filer     
-Inline css och javascript, i motsatts till externa filer, är snabbare första gången sidan laddas. Anledningen är att det krävs färre HTTP-requests. Men eftersom eftersom inline-koden är en del av HTML dokumentet, kommer denna data att behöva laddas varje gång dokumentet laddas. När dessa flyttas ut till externa filer minska filstorleken på HTML dokumentet och om cache används för de externa filerna kommer reponstiden (antalet requests) att minska efter första laddningen av sidan.    
-Genom att placera CSS i början av HTML-dokuemntet, kan element börja visas allt eftersom de har laddats in i klienten. Detta är har inte särskilt stor påverkan på den faktiska tiden för sidan att laddas in, utan är i stället ett sätt att visa för användaren att webbsidan är på gång, och är snart färdig. Alternativet är att en vit bakgrund visas tills att alla element har mottagits från servern och därefter visa sidan i sin hehet. Detta skulle upplevas som att sidan tar längre tid att laddas.    
+Inline css och javascript, i motsatts till externa filer, är snabbare första gången sidan laddas. Anledningen är att det krävs färre HTTP-requests. Men eftersom eftersom inline-koden är en del av HTML dokumentet, kommer denna data att behöva laddas varje gång dokumentet laddas. När dessa flyttas ut till externa filer minska filstorleken på HTML dokumentet och om cache används för de externa filerna kommer reponstiden (antalet requests) att minska efter första laddningen av sidan[7].     
+   
+Genom att placera CSS i början av HTML-dokuemntet, kan element börja visas allt eftersom de har laddats in i klienten. Detta är har inte särskilt stor påverkan på den faktiska tiden för sidan att laddas in, utan är i stället ett sätt att visa för användaren att webbsidan är på gång, och är snart färdig (progressiv rendering). Alternativet är att en vit bakgrund visas tills att alla element har mottagits från servern och därefter visa sidan i sin hehet. Detta skulle upplevas som att sidan tar längre tid att laddas[7].   
+   
+
 
 
 

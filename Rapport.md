@@ -88,14 +88,37 @@ För att undvika att obehöriga får tillgång till data, ska programmeraren und
 ####Labby Mezzage   
 1) De sparade meddelanden skickas som json-data, och finns på url'en /message/data.     
 2) Radera meddelanden görs via POST med /delete i headern och messageID i body'n. Det är tänkt att enbard admin ska ha rättigheter att radera. 
+     
 
 ####Problem   
 1) Användaren behöver inte vara inloggad för att få access till meddelanden. Detta är ett stort säkerhetsproblem, eftersom obehöriga har  tillgång till datan.    
-2) Meddelanden kan raderas genom att manipulera en POST-förfrågan till servern. Detta innebär att obehöriga kan radera meddelanden. 
+2) Meddelanden kan raderas genom att manipulera en POST-förfrågan till servern. Detta innebär att obehöriga kan radera meddelanden.   
+3) Hela databasen kan laddas ner genom url'en /static/message.db. 
   
 ####Förslag på åtgärd     
-Eftersom det är en direktreferens till datakällan (/message/data och /delete) är rekommendationen att en autensiering görs innan datan visas eller raderas. Endast behöriga (inloggade) ska ha rätt att se jsonfilen och enbart admin ska kunna radera.    
+Eftersom det är en direktreferens till datakällan (/message/data och /delete) är rekommendationen att en autensiering görs innan datan visas eller raderas. Endast behöriga (inloggade) ska ha rätt att se jsonfilen och enbart admin ska kunna radera. Placera databasen, så att den är oåtkommlig för användare.        
     
+    
+###Broken Authentication (and session management)     
+####Beskrivning    
+Felaktig hantering av inloggningsuppgifter är ett stort säkerhetsproblem. Det innefattar hur uppgifterna skickas mellan klient och server, hur det sparas i databasen, om det sparas/visas på andra ställen (tex i en cookie eller i url'en)[8].     
+    
+####Orsak     
+Autensiering som ske via okrypterad uppkoppling kan avlyssnas av obehöriga. Lösenors som sparas som som 'plain text' kan användas av obehöriga om de kommer över uppgifterna[8]. 
+   
+####Förebyggande åtgärder    
+All autensiering ska ske över krypterad uppkoppling (https). Lösenord som sparas i databasen ska hashas, d.v.s. envägskrypteras[8].    
+
+    
+####Labby Mezzage
+    
+####Problem
+I applikationen sker inloggningen utan krypterad uppkoppling. Detta innebär att en obehörig person kan avlyssna trafiken och komma över inloggningsuppgifterna.    
+I databasen sparas lösenordet som 'plain text'. Om någon kommer över databasen kan lösenorden användas.    
+    
+####Förebyggande åtgärder   
+Vid inloggning ska uppkopplingen ske via en säker uppkoppling. Istället för att spara lösenord i databasen bör lösenordet som sparas hashas. Detta innebär att om databasen kommer i 'fel händer', så är den inte använbar, eftersom de hashade lösenorden inte går att använda.     
+
        
        
 ###Prestanda   
@@ -125,7 +148,7 @@ Labby Mezzage har inline CSS som är placerad efter body-tagen. Applikationen ha
 ######Minifiera Javascript   
 Genom att ta bort tecken som inte är nödvändinga (minifiering), kan filstorleken reduceras. Mellanslag, radbrytning, tabb och kommentarer är exempel på tecken och tas bort.   
    
-######
+
 
 
 
@@ -151,11 +174,13 @@ Genom att ta bort tecken som inte är nödvändinga (minifiering), kan filstorle
    
 [3] "Guide to SQL Injection" OWASP, 9 Juli 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/Guide_to_SQL_Injection . [Hämtad: 30 November, 2015]. 
    
-[4] "Cross-site Scripting (XSS)" OWASP,22 April 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS. [Hämtad: 30 November, 2015].    
+[4] "Cross-site Scripting (XSS)", OWASP,22 April 2014 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS. [Hämtad: 30 November, 2015].    
    
-[5] "Top 10 2007-Insecure Direct Object Reference" OWASP,18 April 2010 [Online] Tillgänglig: https://www.owasp.org/index.php/https://www.owasp.org/index.php/Top_10_2007-Insecure_Direct_Object_Reference. [Hämtad: 30 November, 2015].
+[5] "Top 10 2007-Insecure Direct Object Reference", OWASP,18 April 2010 [Online] Tillgänglig: https://www.owasp.org/index.php/https://www.owasp.org/index.php/Top_10_2007-Insecure_Direct_Object_Reference. [Hämtad: 30 November, 2015].
    
-[6] "Top 10 2013-A4-Insecure Direct Object References" OWASP, 14 Juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References. [Hämtad: 1 December, 2015].    
+[6] "Top 10 2013-A4-Insecure Direct Object References", OWASP, 14 Juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References. [Hämtad: 1 December, 2015].    
     
-[7] S. Sounders, "High Performance Web Sites" Sebastopol: O’Reilly Media, 2007.
+[7] S. Sounders, "High Performance Web Sites" Sebastopol: O’Reilly Media, 2007.       
+   
+[8][1] "Broken Authentication and Session Management", OWASP, 22 April 2010 [Online] Tillgänglig: https://www.owasp.org/index.php/Broken_Authentication_and_Session_Management. [Hämtad: 5 December, 2015].
 

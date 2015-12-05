@@ -152,25 +152,11 @@ Genom att ta bort tecken som inte är nödvändinga (minifiering), kan filstorle
    
 
 ##Reflektion   
-Uppgiften har varit rolig och jag har lärt mig mycket. För mig har säkerhetsbiten varit det som givit mig mest 'aha'-upplevelser. Vad det gäller prestandabiten så är jag försiktigt frågande om visa saker används (behöver användas) idag. Kurslitteraturen är skriven 2007. Hastigheten på min egen internetuppkoppling har ökat med mer än 100 gånger (då kanske man hade 0,5Mbit, nu har jag 100Mbit). Frågan är om visa prestandahöjande åtgärder verkligen har en cost/benefit som gör det värt besväret.     
+Uppgiften har varit rolig och jag har lärt mig mycket. För mig har säkerhetsbiten varit det som givit mig mest 'aha'-upplevelser. Vad det gäller prestandabiten så är jag försiktigt frågande om visa saker används (behöver användas) idag. Kurslitteraturen är skriven 2007. Hastigheten på min egen internetuppkoppling har ökat med mer än 100 gånger (då kanske man hade 0,5Mbit, nu har jag 100Mbit). Frågan är om visa prestandahöjande åtgärder verkligen har en cost/benefit som gör det värt besväret (jag tänker exempelvis på image maps och css spirits).     
       
-
-
-
-
     
-
-
-
-
-   
-   
-      
-   
-   
-   
-   
-
+    
+    
 ###Referenser   
 [1] "Category:Injection," OWASP, 4 November 2007 [Online] Tillgänglig: https://www.owasp.org/index.php/Category:Injection. [Hämtad: 30 November, 2015].   
    
